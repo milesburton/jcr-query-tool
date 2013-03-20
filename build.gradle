@@ -11,6 +11,10 @@ repositories {
     maven {
         url 'http://repo.adobe.com/nexus/content/groups/public'
     }
+
+    maven {
+        url 'http://artifactory.milesburton.com/artifactory/public'
+    }
 }
 
 dependencies {
