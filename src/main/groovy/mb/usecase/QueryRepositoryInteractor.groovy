@@ -25,8 +25,9 @@ class QueryRepositoryInteractor {
         Repository r = jcrRepositoryFactory.fetchRepository(query.crxUri)
         SimpleCredentials creds = new SimpleCredentials(query.username, query.password.toCharArray())
 
+		Session session = null
         try {
-            Session session = r.login(creds, "crx.default");
+            session = r.login(creds, "crx.default");
             QueryManager qm = session.getWorkspace().getQueryManager()
 
             Query q = qm.createQuery(query.xpath, Query.XPATH)
@@ -40,7 +41,9 @@ class QueryRepositoryInteractor {
         } catch (Exception e) {
             e.printStackTrace();
             throw new IOException(e.toString());
-        }
+        } finally {
+			if(session) session.logout()
+		}
 
     }
 }
