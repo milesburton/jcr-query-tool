@@ -35,7 +35,7 @@ class Main {
         ]
 
         ApplicationContext ctx =
-            new AnnotationConfigApplicationContext("wgsn");
+            new AnnotationConfigApplicationContext("mb");
 
         Main main = ctx.getBean(Main.class);
 
